@@ -84,7 +84,7 @@ app.post('/login', async (req, res) => {
 
 
         const isValid = await bcrypt.compare(password, user.password);
-        if (isValid) {
+        if (!isValid) {
             return res.status(401).json({ message: "Invalid Credentials" });
         }
 
